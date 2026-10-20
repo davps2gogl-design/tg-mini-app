@@ -5,7 +5,7 @@ from aiogram.filters import CommandStart
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
 # Замініть на ваш реальний токен від @BotFather
-BOT_TOKEN = "8803038288:AAEDXA07ph_D04WH4tAcYIGLahb2wp6zj4E"
+BOT_TOKEN = "8803038288:AAFHS4J7H9wRN-D_bTpNLT_nJa81tEh_1Y8"
 WEB_APP_URL = "https://davps2gogl-design.github.io/tg-mini-app/"
 
 bot = Bot(token=BOT_TOKEN)
