@@ -3,157 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Трафік — Приватна Темка</title>
+    <title>Магазин темки «Трафік»</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        :root {
-            --bg-color: #0B130E;
-            --card-bg: #132219;
-            --accent-green: #22c55e;
-            --accent-hover: #16a34a;
-            --text-color: #f8fafc;
-            --subtext-color: #94a3b8;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--tg-theme-bg-color, #18222d);
+            color: var(--tg-theme-text-color, #ffffff);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            margin: 0;
+            padding: 20px;
             box-sizing: border-box;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(34, 197, 94, 0.2);
-            border-radius: 20px;
-            padding: 24px;
-            width: 100%;
-            max-width: 360px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(34, 197, 94, 0.1);
             text-align: center;
         }
 
-        .badge {
-            background: rgba(34, 197, 94, 0.15);
-            color: var(--accent-green);
-            font-size: 12px;
-            font-weight: 700;
-            padding: 6px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-bottom: 15px;
+        .card {
+            background-color: var(--tg-theme-secondary-bg-color, #212d3b);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            max-width: 320px;
+            width: 100%;
         }
 
         h1 {
-            font-size: 26px;
-            margin: 0 0 10px 0;
-            color: #ffffff;
+            font-size: 22px;
+            margin-bottom: 12px;
         }
 
         p {
-            color: var(--subtext-color);
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 15px;
+            color: #a2b2c1;
             margin-bottom: 20px;
-        }
-
-        .features {
-            text-align: left;
-            margin-bottom: 25px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 12px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            font-size: 13px;
-            margin-bottom: 8px;
-            color: #e2e8f0;
-        }
-
-        .feature-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .feature-icon {
-            color: var(--accent-green);
-            margin-right: 8px;
-            font-weight: bold;
-        }
-
-        .price-container {
-            margin-bottom: 20px;
+            line-height: 1.4;
         }
 
         .price {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--accent-green);
+            font-size: 24px;
+            font-weight: bold;
+            color: #31b545;
+            margin-bottom: 20px;
         }
 
-        .btn-buy {
-            width: 100%;
-            background-color: var(--accent-green);
-            color: #000000;
-            font-size: 16px;
-            font-weight: 700;
-            padding: 16px;
+        .btn {
+            background-color: var(--tg-theme-button-color, #248bca);
+            color: var(--tg-theme-button-text-color, #ffffff);
             border: none;
-            border-radius: 14px;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            width: 100%;
+            transition: opacity 0.2s;
         }
 
-        .btn-buy:active {
-            transform: scale(0.98);
-            background-color: var(--accent-hover);
+        .btn:active {
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <span class="badge">🔥 Ексклюзив</span>
-        <h1>Темка «Трафік»</h1>
-        <p>Повний мануал із генерації та монетизації гарячого трафіку.</p>
-
-        <div class="features">
-            <div class="feature-item"><span class="feature-icon">✓</span> Покроковий алгоритм дій</div>
-            <div class="feature-item"><span class="feature-icon">✓</span> Безкоштовні джерела трафіку</div>
-            <div class="feature-item"><span class="feature-icon">✓</span> Швидкий вихід на прибуток</div>
-        </div>
-
-        <div class="price-container">
-            <div class="price">100 грн</div>
-        </div>
-
-        <button class="btn-buy" id="buy-btn">Купити темку</button>
-    </div>
-
-    <script>
-        const tg = window.Telegram.WebApp;
-        tg.expand();
-
-        document.getElementById('buy-btn').addEventListener('click', () => {
-            // Відправляємо боту сигнал про бажання купити
-            tg.sendData(JSON.stringify({
-                item: "темка_трафік",
-                price: 100
-            }));
-            tg.close(); // Закриваємо Mini App після натискання
-        });
-    </script>
-</body>
-</html>
+        <h1>Приватна темка «Трафік» 🚀</h1>
+        <p
